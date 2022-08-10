@@ -1,19 +1,17 @@
-import { UserRepository } from "../repositories/user.repository";
+import UserRepository from "../repositories/user.repository.js";
 
 class CreateUserService {
   execute(data) {
-    if (!!data.username) {
+    if (!data.username) {
       throw new Error("Preencha o Username");
     }
-
-    const userRepository = new UserRepository();
-    const userExists = userRepository.findByUsername(data.username);
+    const userExists = UserRepository.findByUsername(data.username);
 
     if (userExists) {
       throw new Error("O usuário já existe no banco de dados");
     }
 
-    return userRepository.save(data);
+    return UserRepository.save(data);
   }
 }
 

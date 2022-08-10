@@ -1,4 +1,4 @@
-import { v4 } from 'uuid'
+import { v4 as uuid } from 'uuid'
 
 
 class UserRepository {
@@ -6,17 +6,17 @@ class UserRepository {
     users = []
 
     findByUsername(username) {
-        const userExists = this.users.find(user => user.username === username)
+        const userExists = this.users.find((user) => user.username === username)
         return userExists
     }
 
     save(user){
-        const id = new v4()
+        const id = uuid()
         const userWithId = {...user, id }
         this.users.push(userWithId)
 
-        return user
+        return userWithId
     }
 }
 
-export { UserRepository }
+export default new UserRepository()
