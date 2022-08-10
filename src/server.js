@@ -1,10 +1,11 @@
 import express from 'express'
+import { UserController } from './controllers/user.controller'
 const port = 3333
 
 const app = express()
 
-app.get("/users", (req, res) => {
-    //chamar controlador que vai salvar o usuário
-})
+const userController = new UserController;
+
+app.post("/users", userController.handle)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`))

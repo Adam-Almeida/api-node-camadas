@@ -1,8 +1,13 @@
+import { CreateUserService } from "../services/create.user.service"
 
 
 class UserController {
     handle(request, response) {
-      //chamar a camda de serviço
+        const { body } = request
+        const createUserService = new CreateUserService()
+        const result = createUserService.execute(body)
+
+        return response.json(result)
     }
 }
 

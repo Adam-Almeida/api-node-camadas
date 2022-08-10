@@ -1,0 +1,8 @@
+
+
+
+class UserRepository {
+    
+}
+
+export { UserRepository }
